@@ -30,7 +30,7 @@ if(isset($_POST['app_no']) && isset($_POST['password']))
 		}
 		else
 		{
-			echo 'error';
+			echo 'error running query';
 		}
 	}
 	else
