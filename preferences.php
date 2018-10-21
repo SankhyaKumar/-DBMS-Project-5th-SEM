@@ -77,7 +77,7 @@
 							$curr_college = mysqli_fetch_assoc($colleges);
 							?>
 							
-							<option value="<?php $curr_college['clg_id']?>"><?php echo $curr_college["clg_name"]?></option>
+							<option onclick="updateBranch(this.value)" value="<?php $curr_college['clg_id']?>"><?php echo $curr_college["clg_name"]?></option>
 							
 							<?php
 						}
@@ -86,9 +86,32 @@
 				?>
 			</select>
 			<br>
+			<script type="text/javascript">
+				function updateBranch(str)
+				{
+					if (str == "") {
+						document.getElementById("txtHint").innerHTML = "";
+						return;
+					} else { 
+						if (window.XMLHttpRequest) {
+							xmlhttp = new XMLHttpRequest();
+						} else {
+							xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+						}
+						xmlhttp.onreadystatechange = function() {
+							if (this.readyState == 4 && this.status == 200) {
+								document.getElementById("txtHint").innerHTML = this.responseText;
+							}
+						};
+						xmlhttp.open("GET","update_branch.php?q="+str,true);
+						xmlhttp.send();
+					}
+				}
+			</script>
 			Branch:<br>
-			<select style="width:400px;" size=10>
-				
+			<select id="branches" style="width:400px;" size=10>
+				<option value="A">a</option>
+				<option value="B">b</option>
 			</select>
 		</form>
 	</body>
