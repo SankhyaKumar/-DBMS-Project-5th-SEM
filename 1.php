@@ -41,6 +41,7 @@
 
 	for($x=0;$x<sizeof($application_no);$x++){
 		$query1="select clg_id,branch_id from pref where app_no =".$application_no[$x]." order by pref_no asc";
+
 		$result1 = mysqli_query($mysql_connect,$query1);
 		if(mysqli_num_rows($result1) > 0){
     		while($row1= mysqli_fetch_assoc($result1)) {
@@ -50,15 +51,22 @@
     		}
     		$x=0
     		while(1){
-    			$sql="select total_seats as total from seats where clg_id =".$college_id[$x]." and branch_d=".$id_branch[$x]."";
+    			$sql="select filled_seats as total from seats where clg_id =".$college_id[$x]." and branch_d=".$id_branch[$x]."";
+    			$sql01="select total_seats as total_seats from seats where clg_id =".$college_id[$x]." and branch_d=".$id_branch[$x]."";
     			$conn=mysqli_connect($mysql_connect,$sql);
+    			$conn01=mysqli_connect($mysql_connect,$sql01);
     			$data=mysqli_fetch_assoc($conn);
-    			if($data!=0){
-    				$sql1="update seats set total_seats=total_seats-1 where clg_id=".$college_id[$x]." and branch_id=".$id_branch[$x]."";
+    			$data01=mysqli_fetch_assoc($conn01);
+    			if($data["total"]!=$data01["total_filled"]){
+    				$sql1="update seats set filled_seats=filled_seats+1 where clg_id=".$college_id[$x]." and branch_id=".$id_branch[$x]."";
     				$sql2="update students set allocation=1";
     				$result2=mysqli_query($mysql_connect,$sql1);
     				$result3=mysqli_query($mysql_connect,$sql2);
 
+    			}
+    			else{
+    				echo "all the seats are filled";
+    				break;
     			}
     		}
     	}
