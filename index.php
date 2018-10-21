@@ -6,6 +6,7 @@
 	{
 		$firstname = getuserfield('first_name');
 		echo 'You are logged in '.$firstname.'<br />';
+		echo '<a href="logout.php">log out</a><br />';
 	}
 	else
 	{
