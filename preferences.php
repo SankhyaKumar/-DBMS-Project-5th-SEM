@@ -1,6 +1,11 @@
 <?php
 	require 'connect.inc.php';
 	require 'core.inc.php';
+	
+	if(!loggedin())
+	{
+		header('Location: index.php');
+	}
 ?>
 
 <html>
@@ -64,7 +69,7 @@
 			<br>
 			Add a choice:<br><br>
 			College:<br>
-			<select style="width:400px;" size=10>
+			<select name="colleges" id="colleges" style="width:400px;" size=10>
 				<?php
 					$query="SELECT * FROM colleges";
 					if($colleges = mysqli_query($mysql_connect, $query))
@@ -77,7 +82,7 @@
 							$curr_college = mysqli_fetch_assoc($colleges);
 							?>
 							
-							<option value="<?php $curr_college['clg_id']?>"><?php echo $curr_college["clg_name"]?></option>
+							<option onclick="updateBranch(this.value)" value="<?php echo $curr_college['clg_id']?>"><?php echo $curr_college["clg_name"]?></option>
 							
 							<?php
 						}
@@ -86,10 +91,50 @@
 				?>
 			</select>
 			<br>
+			<script type="text/javascript">
+				function updateBranch(str)
+				{
+					if (str == "") {
+						document.getElementById("branches").innerHTML = "";
+						return;
+					} else { 
+						if (window.XMLHttpRequest) {
+							xmlhttp = new XMLHttpRequest();
+						} else {
+							xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+						}
+						xmlhttp.onreadystatechange = function() {
+							if (this.readyState == 4 && this.status == 200) {
+								document.getElementById("branches").innerHTML = this.responseText;
+							}
+						};
+						xmlhttp.open("GET","update_branches.php?q="+str,true);
+						xmlhttp.send();
+					}
+				}
+			</script>
 			Branch:<br>
-			<select style="width:400px;" size=10>
-				
+			<select name="branches" id="branches" style="width:400px;" size=10>
 			</select>
+			<br>
+			<input type="submit" value="Add" onclick="addPref()">
+			<script type="text/javascript">
+				function addPref()
+				{
+					var college=document.getElementById("colleges").value;
+					var branch=document.getElementById("branches").value;
+					if(college=='' || branch=='')
+					{
+						alert("Please select an option.");
+					}
+					else
+					{
+						document.getElementById("code").value="2";
+						document.getElementById("preference_form").action='edit_preferences.php';
+					}
+				}
+			</script>
+			
 		</form>
 	</body>
 </html>
