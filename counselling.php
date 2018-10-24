@@ -1,7 +1,7 @@
 
 <?php
 	require 'connect.inc.php';
-	
+	/*
 	$application_no=array();
 	$college_id=array();
 	$id_branch=array();
@@ -33,6 +33,7 @@
    			else{
         		echo "no result fetched in the inside while";
     		}*/
+			/*
 		}
 	}
 	else{
@@ -84,10 +85,10 @@
     		//		}
     		//	}
     		//}
-    		/*else{
+    		else{
     			echo "error";
     			
-    		}*/
+    		}
     		}
     	
    		else{
@@ -95,12 +96,11 @@
     	}
 	}
 	
-	
+	*/
     
 	//echo $college_id[1];
 
 
 	//echo $data["total"];
-	
-
+	*/
 ?>
