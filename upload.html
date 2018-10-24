@@ -1,0 +1,19 @@
+<?php
+	if(isset($_POST["submit"])){
+		$file= $_FILES["file"];
+		print_r($file);
+	}
+?>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="upload_file.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="file" id="fileToUpload">
+    <input type="submit" value="Upload" name="submit">
+</form>
+
+</body>
+</html>
