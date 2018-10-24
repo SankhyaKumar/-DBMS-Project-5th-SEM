@@ -92,4 +92,6 @@ if(isset($_POST['app_no']) && isset($_POST['password']))
 	login id: <input type="text" name="app_no" maxlength="20"><br/>
 	Password: <input type="password" name="password" maxlength="20"><br/>
 	<input type="submit" value="Log In">
+	
+</form>
 </form>
