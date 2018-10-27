@@ -14,9 +14,8 @@
 			$sql="select profile_pic from students where app_no=".$_SESSION["app_no"];
 			$result=mysqli_query($mysql_connect,$sql);
 			$data=mysqli_fetch_assoc($result);
-			echo $data["profile_pic"];
 			if ($data["profile_pic"]!=""){
-				?><img src="<?php echo "/uploads/1098_profile_Capture.PNG"/*.$data["profile_pic"];*/ ?>" height="100" width="80">
+				?><img src="<?php echo "uploads/".$data['profile_pic']/*.$data["profile_pic"];*/ ?>" height="200" width="200">
 				<?php
 			}
 
@@ -72,19 +71,26 @@
 		<input type="submit" name="reset">
 	    </form>
 	    <?php
-	    	$query="select profile_pic from students where app_no=".$_SESSION["app_no"];
+	    	$query="select ms_12th from students where app_no=".$_SESSION["app_no"];
 	    	$result=mysqli_query($mysql_connect,$query);
 	    	$data=mysqli_fetch_assoc($result);
-	    	$output=$data["profile_pic"];
-	    	if($output)
+	    	$output=$data["ms_12th"];
+	    	if($output!=""){
+	    		?>
+	    		<a href="<?php echo "uploads/".$output; ?>" target="_blank">download your marksheet for review</a>
+	    		<?php
+	    	}
 	    ?>
-		<a href="<?php echo "uploads/".$output; ?>" target="_blank">download your marksheet for review</a>
-		<img src="">
-
+		
+		
 		
 <?php
 	}
-	else if(loggedin() && $_SESSION['login_type']=='collegen'){
+	else if(loggedin() && $_SESSION['login_type']=='college'){
+		
+		echo '<a href="logout.php">log out</a><br />';
+	}
+	else if(loggedin() && $_SESSION['login_type']=='admin'){
 		
 		echo '<a href="logout.php">log out</a><br />';
 	}
@@ -93,5 +99,6 @@
 		include 'loginform.inc.php';
 	}
 ?>
+
 
 

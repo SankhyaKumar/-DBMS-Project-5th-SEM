@@ -84,6 +84,7 @@ if(isset($_POST['type']) && $_POST['type']=='login')
 						$clg_id = $query_row['clg_id'];
 						$_SESSION['app_no'] = $clg_id;
 						$_SESSION['login_type']="college";
+						
 						header('Location: index.php');
 					}
 				}
@@ -92,11 +93,45 @@ if(isset($_POST['type']) && $_POST['type']=='login')
 					echo 'error running query';
 				}
 			}
-
 			else
 			{
 				echo 'You must enter a app_no and password.';
 			}
+		}
+		else if($choice="Admin"){
+
+			if(!empty($app_no) && !empty($password))
+			{
+				$password_hash = $password;
+				//$password_hash = md5($password);
+				$query = "SELECT user_name FROM admin WHERE user_name='".$_POST["app_no"]."' and password='".$password_hash."'";
+				
+				if($query_run = mysqli_query($mysql_connect, $query))
+				{
+					$query_num_rows = mysqli_num_rows($query_run);
+					if($query_num_rows==0)
+					{
+						echo 'Invalid id/password.';
+					}
+					else if($query_num_rows==1)
+					{
+						$query_row = mysqli_fetch_assoc($query_run);
+						$app_no = $query_row['user_name'];
+						$_SESSION['app_no'] = $_POST["app_no"];
+						$_SESSION['login_type']="admin";
+						header('Location: index.php');
+					}
+				}
+				else
+				{
+					echo 'error running query...';
+				}
+			}
+			else
+			{
+				echo 'enter username and password';
+			}
+
 		}
 	}
 }
@@ -159,12 +194,34 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 
 <form action="<?php echo $current_file; ?>" method="POST">
 	<input type="hidden" id="type" value="login" name="type">
-	<select name="choice">
+	<select id='choice' name="choice" onchange='changeVal()'>
 		<option  value="college">college</option>
 		<option  value="student" selected>student</option>
+		<option  value="Admin">Admin</option>
 
 	</select><br><br>
-	login id: <input type="text" name="app_no"><br/>
+
+
+
+	<script type='text/javascript'>
+		function changeVal()
+		{
+			var xd=document.getElementById('xd');
+			var str=document.getElementById('choice').value;
+			var val='';
+			if(str=='Admin')
+				val='Username: ';
+			else
+				val='Login id: ';
+			xd.innerHTML = val;
+			//alert('XD');
+		}
+		changeVal();
+	</script>
+	<div id='xd' style="display:inline-block;">
+	Login Id: 
+	</div>
+	<input type="text" name="app_no"><br/>
 	Password: <input type="password" name="password"><br/>
 	<input type="submit" value="Log In">
 
