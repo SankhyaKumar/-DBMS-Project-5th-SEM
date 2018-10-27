@@ -50,6 +50,8 @@ CREATE TABLE `colleges` (
   `clg_id` int(20) NOT NULL,
   `clg_name` varchar(40) DEFAULT NULL,
   `clg_password` varchar(50) NOT NULL,
+  `clg_rank` int(20) DEFAULT NULL,
+  `website` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`clg_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -60,7 +62,7 @@ CREATE TABLE `colleges` (
 
 LOCK TABLES `colleges` WRITE;
 /*!40000 ALTER TABLE `colleges` DISABLE KEYS */;
-INSERT INTO `colleges` VALUES (10001,'Malaviya National Institute of technolog','college_pass'),(10002,'Punjab Engineering College','0'),(10003,'Poornima Engineering College','0'),(10004,'Manipal University Jaipur','0'),(10005,'JECRC','0'),(10006,'Amity University Jaipur','0'),(10007,'IIT Madras','0'),(10008,'IIT Bombay','0'),(10009,'IIT Delhi','0'),(10010,'IIT Kharagpur','0'),(10011,'IIT Kanpur','0'),(10012,'IIT Roorkee','0'),(10013,'IIT Guwahati','0'),(10014,'Anna University','0'),(10015,'IIT Hyderabad','0'),(10016,'Institute of Chemical Technology','0');
+INSERT INTO `colleges` VALUES (10001,'Malaviya National Institute of technolog','college_pass',NULL,NULL),(10002,'Punjab Engineering College','0',NULL,NULL),(10003,'Poornima Engineering College','0',NULL,NULL),(10004,'Manipal University Jaipur','0',NULL,NULL),(10005,'JECRC','0',NULL,NULL),(10006,'Amity University Jaipur','0',NULL,NULL),(10007,'IIT Madras','0',NULL,NULL),(10008,'IIT Bombay','0',NULL,NULL),(10009,'IIT Delhi','0',NULL,NULL),(10010,'IIT Kharagpur','0',NULL,NULL),(10011,'IIT Kanpur','0',NULL,NULL),(10012,'IIT Roorkee','0',NULL,NULL),(10013,'IIT Guwahati','0',NULL,NULL),(10014,'Anna University','0',NULL,NULL),(10015,'IIT Hyderabad','0',NULL,NULL),(10016,'Institute of Chemical Technology','0',NULL,NULL);
 /*!40000 ALTER TABLE `colleges` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +111,7 @@ CREATE TABLE `pref` (
 
 LOCK TABLES `pref` WRITE;
 /*!40000 ALTER TABLE `pref` DISABLE KEYS */;
-INSERT INTO `pref` VALUES (1016,1,10002,1001),(1016,2,10008,1001),(1016,3,10012,1001),(1023,1,10012,1001),(1023,2,10001,1001),(1023,3,10011,1001),(1098,1,10002,1002),(1098,2,10012,1002),(1145,3,10012,1001),(1145,4,10004,1003),(1145,4,10009,1003);
+INSERT INTO `pref` VALUES (1145,1,10001,1001),(1145,3,10007,1002),(1145,2,10008,1009);
 /*!40000 ALTER TABLE `pref` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +170,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (1016,'arnav','loonker',8209888041,'cularnav@gmail.com','dmbstest',0,10002,1001,'','',''),(1023,'sidharth','dash',7478277311,'sdash@gmail.com','appxasa',0,10012,1001,'','',''),(1098,'rishabh','kalakoti',8407238727,'rkalakoti@gmail.com','12345678',0,10002,1002,'','',''),(1145,'Sankhya','Mitra',7665900655,'2016ucp1145@mnit.ac.in','admin',0,10012,1001,'','','');
+INSERT INTO `students` VALUES (1016,'arnav','loonker',8209888041,'cularnav@gmail.com','dmbstest',0,10002,1001,'','',''),(1023,'sidharth','dash',7478277311,'sdash@gmail.com','appxasa',0,10012,1001,'','',''),(1098,'rishabh','kalakoti',8407238727,'rishabh.kalakoti@gmail.com','',0,10002,1002,'','',''),(1145,'Sankhya','Mitra',7665900655,'2016ucp1145@mnit.ac.in','admin',0,10012,1001,'','','');
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -181,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-25  0:12:21
+-- Dump completed on 2018-10-27 15:08:32
