@@ -10,7 +10,17 @@
 		echo '<a href="logout.php">log out</a><br />';
 ?>
 
+		<?php
+			$sql="select profile_pic from students where app_no=".$_SESSION["app_no"];
+			$result=mysqli_query($mysql_connect,$sql);
+			$data=mysqli_fetch_assoc($result);
+			if ($data["profile_pic"]!=""){
+				?><img src="<?php echo $data["profile_pic"]; ?>" height="100" width="80">
+				<?php
+			}
 
+		?>
+		
 
 		your application number  :<?php  $query='select app_no from students where app_no='.$_SESSION['app_no'];
 			$result=mysqli_query($mysql_connect,$query);
@@ -51,15 +61,24 @@
 		</form>
 		<br>
 		<div >
+		<form action="reset.php" method="post">
 		enter new password:<input type="password" name="reset_password">
 		<br>
 		enter new email address:<input type='text' name="reset_email">
 		<br>
-		enter new phone number:<input type='text' name="reset_email">
+		enter new phone number:<input type='text' name="reset_phone">
 		<br>
 		<input type="submit" name="reset">
-		</div>
-		
+	    </form>
+	    <?php
+	    	$query="select profile_pic from students where app_no=".$_SESSION["app_no"];
+	    	$result=mysqli_query($mysql_connect,$query);
+	    	$data=mysqli_fetch_assoc($result);
+	    	$output=$data["profile_pic"];
+	    ?>
+		<a href="<?php echo "uploads/".$output; ?>" target="_blank">download your marksheet for review</a>
+		<img src="">
+
 		
 <?php
 	}
