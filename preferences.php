@@ -145,7 +145,7 @@
 				function updateRank(str)
 				{
 					if (str == "") {
-						document.getElementById("branches").innerHTML = "";
+						document.getElementById("clg_info").innerHTML = "";
 						return;
 					} else { 
 						if (window.XMLHttpRequest) {
@@ -155,7 +155,7 @@
 						}
 						xmlhttp.onreadystatechange = function() {
 							if (this.readyState == 4 && this.status == 200) {
-								document.getElementById("branches").innerHTML = this.responseText;
+								document.getElementById("clg_info").innerHTML = this.responseText;
 							}
 						};
 						xmlhttp.open("GET","update_rank.php?q="+str,true);
@@ -166,6 +166,8 @@
 			Branch:<br>
 			<select name="branches" id="branches" style="width:400px;" size=10>
 			</select>
+			<div id="clg_info">
+			</div>
 			<br>
 			<input type="submit" value="Add" onclick="addPref()">
 			<script type="text/javascript">

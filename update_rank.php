@@ -4,14 +4,12 @@
 	
 	$q = intval($_GET['q']);
 	
-	$sql="SELECT clg_rank,website FROM branches WHERE branch_id IN (select branch_id from seats where clg_id=".$q.")";
+	$sql="SELECT clg_rank, website FROM colleges WHERE clg_id=".$q;
 	if($result = mysqli_query($mysql_connect,$sql))
 	{
-		
 		while($row = mysqli_fetch_array($result)) {
-			echo "NIRF Rank:".$row['clg_rank']."<br>Website: ".$row[website]."<br>";
+			echo "Website: ".$row['website']."<br>NIRF rank: ".$row['clg_rank']."";
 		}
-		
 	}
 	else
 	{
