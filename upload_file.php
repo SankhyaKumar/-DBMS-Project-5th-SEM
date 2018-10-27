@@ -26,7 +26,7 @@
 					mysqli_query($mysql_connect,$query);
 					echo $_SESSION["app_no"]."<br>";
 				}
-				else if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpeg") && !file_exists($newFileName) && $i==1){
+				else if(get_file_extension($filename)=="pdf" && !file_exists($newFileName) && $i==1){
 					//echo "2";
 					echo $_SESSION["app_no"]."<br>";
 					move_uploaded_file($tmpFilePath,$newFilePath);
@@ -40,6 +40,7 @@
 				}
 				}
 			}
+			header('Location: index.php');
 		}	
 		//if(unlink($newFilePath)) echo "file deleted";
 	
@@ -83,7 +84,7 @@
 					mysqli_query($mysql_connect,$query);
 					//echo $_SESSION["app_no"]."<br>";
 				}
-				else if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpeg") &&!file_exists($newFileName) && $i==1){
+				else if(get_file_extension($filename)=="pdf" && !file_exists($newFileName) && $i==1){
 					
 					unlink("./uploads/" . $data2["ms_12th"]);
 					//echo $_SESSION["app_no"]."<br>";
@@ -95,6 +96,7 @@
 				
 			}
 		}	
+		header('Location: index.php');
 	}
 
 	function get_file_extension($file_name) {

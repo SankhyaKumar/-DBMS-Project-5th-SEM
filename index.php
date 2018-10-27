@@ -14,8 +14,9 @@
 			$sql="select profile_pic from students where app_no=".$_SESSION["app_no"];
 			$result=mysqli_query($mysql_connect,$sql);
 			$data=mysqli_fetch_assoc($result);
+			echo $data["profile_pic"];
 			if ($data["profile_pic"]!=""){
-				?><img src="<?php echo $data["profile_pic"]; ?>" height="100" width="80">
+				?><img src="<?php echo "/uploads/1098_profile_Capture.PNG"/*.$data["profile_pic"];*/ ?>" height="100" width="80">
 				<?php
 			}
 
