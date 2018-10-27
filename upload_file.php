@@ -19,14 +19,14 @@
 			//echo $$newFileName."<br>";
 			if ($tmpFilePath != ""){
 				$newFilePath = "./uploads/" . $newFileName;
-				if(get_file_extension($filename)=="PNG" && !file_exists($newFileName) && $i==0){
+				if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpeg") && !file_exists($newFileName) && $i==0){
 					//echo "1";
 					move_uploaded_file($tmpFilePath,$newFilePath);
 					$query="update students set profile_pic='".$newFileName."' where app_no=".$_SESSION["app_no"];
 					mysqli_query($mysql_connect,$query);
 					echo $_SESSION["app_no"]."<br>";
 				}
-				else if(get_file_extension($newFileName)=="pdf" && !file_exists($newFileName) && $i==1){
+				else if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpeg") && !file_exists($newFileName) && $i==1){
 					//echo "2";
 					echo $_SESSION["app_no"]."<br>";
 					move_uploaded_file($tmpFilePath,$newFilePath);
@@ -75,7 +75,7 @@
 				//if(unlink("./uploads/" . $data2["ms_12th"])) echo "file2 deleted"."<br>";
 				
 
-				if(get_file_extension($newFileName)=="PNG" && !file_exists($newFileName) && $i==0){
+				if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpeg") && !file_exists($newFileName) && $i==0){
 					
 					unlink("./uploads/" . $data1["profile_pic"]);
 					move_uploaded_file($tmpFilePath,$newFilePath);
@@ -83,7 +83,7 @@
 					mysqli_query($mysql_connect,$query);
 					//echo $_SESSION["app_no"]."<br>";
 				}
-				else if(get_file_extension($newFileName)=="pdf" &&!file_exists($newFileName) && $i==1){
+				else if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpeg") &&!file_exists($newFileName) && $i==1){
 					
 					unlink("./uploads/" . $data2["ms_12th"]);
 					//echo $_SESSION["app_no"]."<br>";
