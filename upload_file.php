@@ -1,7 +1,7 @@
 <?php
 	require 'core.inc.php';
 	require 'connect.inc.php';
-	if(isset($_POST["new"])){
+	/*if(isset($_POST["new"])){
 		$total = count($_FILES['file']['name']);
 		echo $total."<br>";
 		for( $i=0 ; $i < $total ; $i++ ) {
@@ -41,10 +41,10 @@
 				}
 			}
 			header('Location: index.php');
-		}	
+		}	*/
 		//if(unlink($newFilePath)) echo "file deleted";
 	
-	else if (isset($_POST["change"])){
+	if (isset($_POST["change"])){
 		$total = count($_FILES['file']['name']);
 		for( $i=0 ; $i < $total ; $i++ ) {
 			$tmpFilePath = $_FILES['file']['tmp_name'][$i];
@@ -92,6 +92,10 @@
 					$query="update students set ms_12th='".$newFileName."' where app_no=".$_SESSION["app_no"];
 					mysqli_query($mysql_connect,$query);
 
+				}
+				else if(file_exists($newFileName)){
+					echo "the file is already present in our database please"."<br>";
+					echo "click on change to change the document";
 				}
 				
 			}

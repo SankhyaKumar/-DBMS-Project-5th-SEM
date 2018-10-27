@@ -57,7 +57,7 @@
     	Select image to upload(in jpeg format) and 12th marksheet(in pdf format):<br>
     	<input type="file" name="file[]" required="" multiple="multiple"><br><br>
     	<input type="file" name="file[]" required="" multiple="multiple"><br><br>
-    	<input type="submit" value="Upload" name="new">
+    	<!--<input type="submit" value="Upload" name="new">-->
     	<input type="submit" value="change" name="change">
 		</form>
 		<br>
@@ -76,6 +76,7 @@
 	    	$result=mysqli_query($mysql_connect,$query);
 	    	$data=mysqli_fetch_assoc($result);
 	    	$output=$data["profile_pic"];
+	    	if($output)
 	    ?>
 		<a href="<?php echo "uploads/".$output; ?>" target="_blank">download your marksheet for review</a>
 		<img src="">
