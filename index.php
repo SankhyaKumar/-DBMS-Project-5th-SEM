@@ -98,7 +98,11 @@
 	{
 		include 'loginform.inc.php';
 	}
+<<<<<<< HEAD
 ?>
 
 
 
+=======
+?>
+>>>>>>> c10c1fa6007dc5bda55bdf54f9f5f5b1321f3925
