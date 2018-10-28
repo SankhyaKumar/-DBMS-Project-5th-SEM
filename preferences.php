@@ -156,7 +156,7 @@
 						xmlhttp.onreadystatechange = function() {
 							if (this.readyState == 4 && this.status == 200) {
 								document.getElementById("clg_info").innerHTML = this.responseText;
-							}
+							}	
 						};
 						xmlhttp.open("GET","update_rank.php?q="+str,true);
 						xmlhttp.send();

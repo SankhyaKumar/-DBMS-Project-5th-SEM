@@ -92,5 +92,3 @@
 		include 'loginform.inc.php';
 	}
 ?>
-
-
