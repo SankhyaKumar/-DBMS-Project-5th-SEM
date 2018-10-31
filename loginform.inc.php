@@ -19,6 +19,20 @@ require('PHPMailer/Exception.php');
 				<div id='logo'>
 					<img src='logo.png' id='logo_img'>
 				</div>
+				<div id='menu'>
+					<button id='toggle_btn' onclick="toggle(this.value)" value=0>Show Login</button><br>
+					
+					<style type='text/css'>
+						#toggle_btn{
+							margin-top:20px; border:1px solid white; background: rgba(0,0,0,0);color: white; padding:10px;
+						}
+						#toggle_btn:hover{
+							color:yellow;
+							border:1px solid yellow;
+						}
+					</style>
+			
+				</div>
 			</div>
 			
 			<div id='main'>
@@ -213,7 +227,6 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 
 ?>
 
-			<button id='toggle_btn' onclick="toggle(this.value)" value=0>Show Login</button><br>
 			<script type='text/javascript'>
 				function toggle(flag)
 				{

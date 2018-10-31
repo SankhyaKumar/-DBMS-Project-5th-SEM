@@ -54,22 +54,6 @@ a,a:active,a:hover,a:visited{
 .btn:hover{
 	cursor:hand;
 }
-button{
-	border:1px solid white;
-	float:right;
-	color:blue;
-	font-weight:bold;
-	//background-color:yellow;
-	padding:8px;
-	text-align:center;
-	min-width:100px;
-}
-
-button:hover{
-	cursor:hand;
-	border:1px solid blue;
-}
-
 #logo{
 	display:block;
 	float:left;
@@ -80,7 +64,7 @@ button:hover{
 
 #logo_img{
 	width:200px;
-	margin-left:10%;
+	margin-left:20%;
 	height:60px;
 }
 #menu
