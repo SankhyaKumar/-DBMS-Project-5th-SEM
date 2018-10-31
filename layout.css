@@ -39,7 +39,9 @@ option,select{
 	color:rgb(64,188,216);
 	border:1px solid rgb(64,188,216);
 }
-
+a,a:active,a:hover,a:visited{
+	color:inherit;
+}
 .btn{
 	border:1px solid white;
 	color:white;
@@ -69,7 +71,8 @@ button:hover{
 }
 
 #logo{
-	width:50%;
+	display:block;
+	float:left;
 	height:80px;
 	padding:5px;
 	text-align:center;
@@ -77,10 +80,32 @@ button:hover{
 
 #logo_img{
 	width:200px;
-	margin:auto;
+	margin-left:10%;
 	height:60px;
 }
-
+#menu
+{
+	float:right;
+	color: white;
+	height:80px;
+	padding-right:10%;
+}
+.item{
+	height:80px;
+	float:right;
+	padding-right:10px;
+	padding-left:10px;
+	padding-top:25px;
+}
+.link{
+	text-decoration:none;
+	border:1px solid white;
+	padding:5px;
+}
+.link:hover{
+	color:yellow;
+	border: 1px solid yellow;
+}
 #main{
 	padding:20px;
 	background-color:rgba(251,253,62,0.3);

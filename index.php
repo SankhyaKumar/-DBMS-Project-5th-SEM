@@ -1,4 +1,14 @@
-<html>
+
+<?php
+	require 'core.inc.php';
+	require 'connect.inc.php';
+	
+	if(loggedin() && $_SESSION['login_type']=='student')
+	{
+								$firstname = getuserfield('first_name');
+		
+		?>
+		<html>
 	<head>
 		<title>College Zone</title>
 		<link href='layout.css' rel='stylesheet' type='text/css'>
@@ -13,46 +23,55 @@
 				<div id='logo'>
 					<img src='logo.png' id='logo_img'>
 				</div>
+				<div id='menu'>
+						<div class='item'><a href="logout.php" class='link'>Logout</a></div>
+						<div class='item'><a href="preferences.php" class='link'>Edit Preferences</a></div>
+						
+						
+
+				</div>
 			</div>
 			
 			<div id='main'>
-
-<?php
-	require 'core.inc.php';
-	require 'connect.inc.php';
-	
-	if(loggedin() && $_SESSION['login_type']=='student')
-	{
-		$firstname = getuserfield('first_name');
-		echo 'You are logged in '.$firstname.'<br />';
-		echo '<a href="preferences.php">edit preferences</a><br />';
-		echo '<a href="logout.php">log out</a><br />';
-?>
-
+			
+		
+<style type='text/css'>
+	.img_dp{
+		float:right;
+	}
+</style>
 		<?php
 			$sql="select profile_pic from students where app_no=".$_SESSION["app_no"];
 			$result=mysqli_query($mysql_connect,$sql);
 			$data=mysqli_fetch_assoc($result);
 			if ($data["profile_pic"]!=""){
-				?><img src="<?php echo "uploads/".$data['profile_pic']/*.$data["profile_pic"];*/ ?>" height="200" width="200">
+				?><img class='img_dp' src="<?php echo "uploads/".$data['profile_pic']/*.$data["profile_pic"];*/ ?>" height="200" width="200">
 				<?php
 			}
 			else if($data["profile_pic"]==""){
-				?><img src="upload.jpg" height="200" width="200">
+				?><img class='img_dp' src="upload.jpg" height="200" width="200">
 				<?php
 			}
 
 		?>
+
+		<Table>
+		<Tr>
+		<td colspan=2><h1>Profile</h1></td>
 		
-		<h1>Profile</h1>
-		Application number  :<?php  $query='select app_no from students where app_no='.$_SESSION['app_no'];
+		<tr>
+		<td>Application number :</td>
+		<td>
+		<?php  $query='select app_no from students where app_no='.$_SESSION['app_no'];
 			$result=mysqli_query($mysql_connect,$query);
 			$data=mysqli_fetch_assoc($result);
 			echo $data['app_no'];
 		?>
-
-<br><br>
-		Name  :<?php
+		</td>
+		<tr>
+		<Td>Name  :</td>
+		<Td>
+		<?php
 		$query="select first_name,last_name from students where app_no=".$_SESSION["app_no"];
 		if($conn=mysqli_query($mysql_connect,$query)){
 			while($row=mysqli_fetch_assoc($conn)){
@@ -60,39 +79,60 @@
 			}
 		}
 		?>
-		<br><br>	
-		Email address:<?php
+		</td>
+		<tr>
+		<td>
+		Email address:
+		</td>
+		<td>
+		<?php
 			$query="select email from students where app_no=".$_SESSION["app_no"];
 			$result=mysqli_query($mysql_connect,$query);
 			$data=mysqli_fetch_assoc($result);
 			echo $data["email"];
 		?>
-		<br><br>
-		Phone number is :<?php
+		</td>
+		<tr>
+		<td>
+		Phone number is :
+		</td>
+		<td>
+		<?php
 			$query="select phone from students where app_no=".$_SESSION["app_no"];
 			$result=mysqli_query($mysql_connect,$query);
 			$data=mysqli_fetch_assoc($result);
 			echo $data["phone"];
 		?>
-		<br><br>
+		</td>
+		<tr>
 		<form action="upload_file.php" method="post" enctype="multipart/form-data">
-    	Select image to upload(in jpeg format) and 12th marksheet(in pdf format):<br>
-    	<input type="file" name="file[]" required="" multiple="multiple"><br><br>
-    	<input type="file" name="file[]" required="" multiple="multiple"><br><br>
+    	<td colspan=2>Select image to upload(in jpeg format) and 12th marksheet(in pdf format):</td>
+		<tr>
+		<td>
+    	<input type="file" name="file[]" required="" multiple="multiple" class='txt'></td>
+		<tr>
+    	<td>
+		<input type="file" name="file[]" required="" multiple="multiple" class='txt'></td>
+		<tr>
     	<!--<input type="submit" value="Upload" name="new">-->
-    	<input type="submit" value="change" name="change">
+    	<td colspan=2 align='center'><input type="submit" value="Change" name="change" class='btn'></td>
 		</form>
-		<br>
-		<h2>Edit profile</h2>
+		<tr>
+		<td colspan=2><hr></td>
+		<tr>
+		<td colspan=2><h2>Edit profile</h2></td>
 		<form action="reset.php" method="post">
-		New password:<input type="password" name="reset_password">
-		<br>
-		New email address:<input type='text' name="reset_email">
-		<br>
-		New phone number:<input type='text' name="reset_phone">
-		<br>
-		<input type="submit" name="reset">
+		<tr>
+		<td>New password:</td><td><input type="password" name="reset_password" class='txt'></td>
+		<tr>
+		<td>New email address:</td><td><input type='text' name="reset_email" class='txt'></td>
+		<tr>
+		<td>New phone number:</td><td><input type='text' name="reset_phone" class='txt'></td>
+		<tr>
+		<td colspan=2 align='center'><input type="submit" name="reset" class='btn'></td>
 	    </form>
+		<tr>
+		<Td>
 	    <?php
 	    	$query="select ms_12th from students where app_no=".$_SESSION["app_no"];
 	    	if($result=mysqli_query($mysql_connect,$query))
@@ -105,10 +145,14 @@
 					<?php
 				}
 			}
-	    ?>
+	    ?></td>
+		</table>
 		
-		
-		
+
+</div><!--main-->
+		</div>
+	</body>
+</html>		
 <?php
 	}
 
@@ -198,8 +242,3 @@
 	}
 ?>
 
-
-</div><!--main-->
-		</div>
-	</body>
-</html>
