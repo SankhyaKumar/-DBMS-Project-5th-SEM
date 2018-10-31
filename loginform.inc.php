@@ -1,3 +1,23 @@
+<html>
+	<head>
+		<title>College Zone</title>
+		<link href='layout.css' rel='stylesheet' type='text/css'>
+		<link rel="shortcut icon" type="image/png" href='favicon.png'>
+
+	</head>
+	
+	<body>
+			<div id='big_wrapper'>
+			<div id='header'>
+				<div id='logo'>
+					<div id='logo'>
+					<img src='logo.png' id='logo_img'>
+				</div>
+				</div>
+			</div>
+			
+			<div id='main'>
+	
 <?php
 
 require('PHPMailer/PHPMailer.php');
@@ -194,12 +214,13 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 
 <form action="<?php echo $current_file; ?>" method="POST">
 	<input type="hidden" id="type" value="login" name="type">
+	User login type: 
 	<select id='choice' name="choice" onchange='changeVal()'>
 		<option  value="college">college</option>
 		<option  value="student" selected>student</option>
 		<option  value="Admin">Admin</option>
 
-	</select><br><br>
+	</select> &nbsp;&nbsp;
 
 
 
@@ -221,8 +242,8 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 	<div id='xd' style="display:inline-block;">
 	Login Id: 
 	</div>
-	<input type="text" name="app_no"><br/>
-	Password: <input type="password" name="password"><br/>
+	<input type="text" name="app_no"> &nbsp;
+	Password: <input type="password" name="password"> &nbsp;
 	<input type="submit" value="Log In">
 
 	<br><br>
@@ -230,7 +251,12 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 		if(isset($_GET['q']))
 			echo 'Password details has been sent to registered email.<br>';
 	?>
-	Request password.<Br>
-	Application No: <input type="text" name="app_no_req" maxlength="20"><br/>
+	<i>Don't have a password yet? Request password</i><Br>
+	Application No: <input type="text" name="app_no_req" maxlength="20"> &nbsp;
 	<input type="submit" value="Request" onclick="document.getElementById('type').value='request';">
 </form>
+				<hr>
+			</div><!--main-->
+		</div>
+	</body>
+</html>
