@@ -14,7 +14,7 @@
 			
 			//echo "  ".$rand1."  ".$rand2."<br>";
 			for ($i=1;$i<=5;$i++){
-				$rand1=1000+rand(1,100);
+				$rand1=1000+rand(1,5);
 				$rand2=10000+rand(1,35);
 				echo "  ".$rand1."  ".$rand2."  ".$data['app_no']." ".$i."<br>";
 				$query2="insert into pref values(".$data['app_no'].",".$i.",".$rand2.",".$rand1.")";

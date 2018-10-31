@@ -4,6 +4,8 @@
 	require 'core.inc.php';
 	require 'connect.inc.php';
 	
+	$certificates=0;
+
 	if(loggedin() && $_SESSION['login_type']=='student')
 	{
 		$firstname = getuserfield('first_name');
@@ -21,7 +23,7 @@
 				<?php
 			}
 			else if($data["profile_pic"]==""){
-				?><img src="upload.jpg" height="200" width="200">
+				?><img src="upload1.jpg" height="150" width="200">
 				<?php
 			}
 
@@ -67,14 +69,17 @@
 		</form>
 		<br>
 		<h2>Edit profile</h2>
+
+
+
 		<form action="reset.php" method="post">
-		New password:<input type="password" name="reset_password">
-		<br>
-		New email address:<input type='text' name="reset_email">
-		<br>
-		New phone number:<input type='text' name="reset_phone">
-		<br>
-		<input type="submit" name="reset">
+			New password:<input type="password" name="reset_password">
+			<br>
+			New email address:<input type='text' name="reset_email">
+			<br>
+			New phone number:<input type='text' name="reset_phone">
+			<br>
+			<input type="submit" name="reset">
 	    </form>
 	    <?php
 	    	$query="select ms_12th from students where app_no=".$_SESSION["app_no"];
@@ -98,40 +103,50 @@
 	else if(loggedin() && $_SESSION['login_type']=='college'){
 		
 		echo '<a href="logout.php">log out</a><br />';
-		$query="select app_no,first_name,last_name,alloted_branch where alloted_clg=".$_SESSION["app_no"];
+		// $_SESSION['app_no'];
+		$sql123="select app_no,first_name,last_name,alloted_branch from students where alloted_clg=".$_SESSION["app_no"];
 		
-		if($result=mysqli_query($mysql_connect,$query)){
-			$result=mysqli_query($mysql_connect,$query);
-			/*echo "<table border='1'>
-				<tr>
-					<th>name</th>
-					<th>branch</th>
-				</tr>";*/
+		if($result=mysqli_query($mysql_connect,$sql123)){
+			//$result=mysqli_query($mysql_connect,$sql123);
+			
 				?>
 
 				<table>
 						<tr>
 							<th>name</th>
 							<th>branch allocated</th>
-							<th><a href="<?php echo "uploads/".$output; ?>" target="_blank">documents</a></th>
+							<th>documents</a></th>
 						</tr>
 
 				<?php
 				while($data=mysqli_fetch_assoc($result)){
 
-					$_SESSION['verify_app_no']=$data['app_no'];
-					$sql="select ms_12th,allocated from students where app_no=".$data["app_no"];
+					//$_SESSION['verify_app_no']=$data['app_no'];
+					$sql="select allocated from students where app_no=".$data["app_no"];
+					$sql12="select ms_12th from students where app_no=".$data["app_no"];
+
 					$sql_result=mysqli_query($mysql_connect,$sql);
+					if($sql_result12=mysqli_query($mysql_connect,$sql12)){
+						$certificates=1;
+					}
+
 					$sql_data=mysqli_fetch_assoc($sql_result);
+					//$sql_data12=mysqli_fetch_assoc($sql_result12);
+					//$sql_rows=mysqli_num_rows($sql_result12);
+
+					
 
 					?>
 
 					<tr>
+						<?php
+						if($certificates==1){
+							?>
 						<td><?php echo $data["first_name"]."  ".$data["last_name"]; ?></td>
 						<td><?php echo $data["alloted_branch"]; ?></td>
 
 						<?php  
-							if($sql_data['allocated']!=2){
+							if($sql_data['allocated']!=2 && $certificates==1){
 								?>
 									<form  action="verify.php" method="post">
 									<input type="hidden" name="data_app_no" value="$data['app_no']"> 
@@ -140,7 +155,7 @@
 									</form>
 								<?php
 							}
-							else if($sql_data['allocated']==2){
+							else if($sql_data['allocated']==2 && $certificates==1){
 								?>
 								<form  action="verify.php" method="post">
 									<input type="hidden" name="data_app_no" value="$data['app_no']"> 
@@ -150,9 +165,11 @@
 									<?php
 							}
 							
+							
 
-						?>
-
+						
+							}
+							?>
 
 					</tr>
 
@@ -173,9 +190,27 @@
 	else if(loggedin() && $_SESSION['login_type']=='admin'){
 		
 		echo '<a href="logout.php">log out</a><br />';
+		?>
+			<a href="counselling.php">start the counselling</a>
+		<?php
 	}
 	else
 	{
 		include 'loginform.inc.php';
 	}
 ?>
+<script type='text/javascript'>
+		function changeVal()
+		{
+			var xd=document.getElementById('xd');
+			var str=document.getElementById('choice').value;
+			var val='';
+			if(str=='Admin')
+				val='Username: ';
+			else
+				val='Login id: ';
+			xd.innerHTML = val;
+			//alert('XD');
+		}
+		changeVal();
+	</script>
