@@ -1,7 +1,9 @@
 body,default{
+	font-family:"Trebuchet MS", Helvetica, sans-serif;
 	padding:0px;
 	margin:0px;
-	background-color:rgba(240,240,240,0.8);
+	background-color:rgba(240,255,114,0.5);
+	color:rgb(64,188,216);
 }
 
 hr{
@@ -19,13 +21,55 @@ hr{
 	width:100%;
 	position:fixed;
 	height:80px;
-	border:1px solid rgba(150,150,150,0.5);
+	//border:1px solid blue;
 	z-index:1;
-	background-color:rgba(200,200,200,0.5);
+	background-color:rgb(64,188,216);
+}
+.txt
+{
+	border:1px solid white;
+	color:rgb(64,188,216);
+	background-color:white;
+	font-weight:bold;
+	//background-color:rgb(64,188,216);
+	padding:2px;
+}
+
+option,select{
+	color:rgb(64,188,216);
+	border:1px solid rgb(64,188,216);
+}
+
+.btn{
+	border:1px solid white;
+	color:white;
+	font-weight:bold;
+	background-color:rgb(64,188,216);
+	padding:8px;
+	text-align:center;
+	min-width:100px;
+}
+.btn:hover{
+	cursor:hand;
+}
+button{
+	border:1px solid white;
+	float:right;
+	color:blue;
+	font-weight:bold;
+	//background-color:yellow;
+	padding:8px;
+	text-align:center;
+	min-width:100px;
+}
+
+button:hover{
+	cursor:hand;
+	border:1px solid blue;
 }
 
 #logo{
-	width:60%;
+	width:50%;
 	height:80px;
 	padding:5px;
 	text-align:center;
@@ -39,7 +83,7 @@ hr{
 
 #main{
 	padding:20px;
-	background-color:rgba(200,200,200,0.1);
+	background-color:rgba(251,253,62,0.3);
 	position:relative;
 	top:80px;
 	margin:auto;
@@ -47,4 +91,8 @@ hr{
 	width:80%;
 	border:1px solid rgba(255,255,255,1);
 	min-height:80%;
+}
+
+#login_info{
+	display:none;
 }
