@@ -133,7 +133,7 @@
 							if($sql_data['allocated']!=2){
 								?>
 									<form  action="verify.php" method="post">
-									<input type="hidden" name="data['app_no']"> 
+									<input type="hidden" name="data_app_no" value="$data['app_no']"> 
 									<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
 									<td><input type="submit" name="verify" value="verify" action="verify.php" method="post"></td>
 									</form>
@@ -141,18 +141,17 @@
 							}
 							else if($sql_data['allocated']==2){
 								?>
-								<form>
-								<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
-								<td><input type="submit" name="verify_not" value="no documents" action="verify.php"></td>
-								</form>
-								<?php
-
+								<form  action="verify.php" method="post">
+									<input type="hidden" name="data_app_no" value="$data['app_no']"> 
+									<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
+									<td><input type="text" name="verified"  ></td>
+									</form>
+									<?php
 							}
+							
 
 						?>
 
-						<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
-						<td><input type="submit" name="verify" value= action="verify.php"></td>
 
 					</tr>
 
