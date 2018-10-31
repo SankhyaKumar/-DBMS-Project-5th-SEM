@@ -27,15 +27,15 @@
 
 		?>
 		
-
-		your application number  :<?php  $query='select app_no from students where app_no='.$_SESSION['app_no'];
+		<h1>Profile</h1>
+		Application number  :<?php  $query='select app_no from students where app_no='.$_SESSION['app_no'];
 			$result=mysqli_query($mysql_connect,$query);
 			$data=mysqli_fetch_assoc($result);
 			echo $data['app_no'];
 		?>
 
 <br><br>
-		your application number  :<?php
+		Name  :<?php
 		$query="select first_name,last_name from students where app_no=".$_SESSION["app_no"];
 		if($conn=mysqli_query($mysql_connect,$query)){
 			while($row=mysqli_fetch_assoc($conn)){
@@ -44,14 +44,14 @@
 		}
 		?>
 		<br><br>	
-		your email address:<?php
+		Email address:<?php
 			$query="select email from students where app_no=".$_SESSION["app_no"];
 			$result=mysqli_query($mysql_connect,$query);
 			$data=mysqli_fetch_assoc($result);
 			echo $data["email"];
 		?>
 		<br><br>
-		your phone number is :<?php
+		Phone number is :<?php
 			$query="select phone from students where app_no=".$_SESSION["app_no"];
 			$result=mysqli_query($mysql_connect,$query);
 			$data=mysqli_fetch_assoc($result);
@@ -66,27 +66,28 @@
     	<input type="submit" value="change" name="change">
 		</form>
 		<br>
-		<div >
+		<h2>Edit profile</h2>
 		<form action="reset.php" method="post">
-		enter new password:<input type="password" name="reset_password">
+		New password:<input type="password" name="reset_password">
 		<br>
-		enter new email address:<input type='text' name="reset_email">
+		New email address:<input type='text' name="reset_email">
 		<br>
-		enter new phone number:<input type='text' name="reset_phone">
+		New phone number:<input type='text' name="reset_phone">
 		<br>
 		<input type="submit" name="reset">
 	    </form>
 	    <?php
 	    	$query="select ms_12th from students where app_no=".$_SESSION["app_no"];
-	    	$result=mysqli_query($mysql_connect,$query);
-	    	$data=mysqli_fetch_assoc($result);
-	    	$output=$data["ms_12th"];
-	    	$_SESSION["document"]=$output;
-	    	if($output!=""){
-	    		?>
-	    		<a href="<?php echo "uploads/".$output; ?>" target="_blank">download your marksheet for review</a>
-	    		<?php
-	    	}
+	    	if($result=mysqli_query($mysql_connect,$query))
+			{
+				$data=mysqli_fetch_assoc($result);
+				$output=$data["ms_12th"];
+				if($output!=""){
+					?>
+					<a href="<?php echo "uploads/".$output; ?>" target="_blank">download your marksheet for review</a>
+					<?php
+				}
+			}
 	    ?>
 		
 		
@@ -177,4 +178,4 @@
 	{
 		include 'loginform.inc.php';
 	}
-
+?>

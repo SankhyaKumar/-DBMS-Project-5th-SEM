@@ -1,0 +1,50 @@
+body,default{
+	padding:0px;
+	margin:0px;
+	background-color:rgba(240,240,240,0.8);
+}
+
+hr{
+	width:50%;
+	border:1px solid white;
+	text-align:left;
+}
+
+#big_wrapper{
+	margin:0px;
+	padding:0px;
+}
+
+#header{
+	width:100%;
+	position:fixed;
+	height:80px;
+	border:1px solid rgba(150,150,150,0.5);
+	z-index:1;
+	background-color:rgba(200,200,200,0.5);
+}
+
+#logo{
+	width:60%;
+	height:80px;
+	padding:5px;
+	text-align:center;
+}
+
+#logo_img{
+	width:200px;
+	margin:auto;
+	height:60px;
+}
+
+#main{
+	padding:20px;
+	background-color:rgba(200,200,200,0.1);
+	position:relative;
+	top:80px;
+	margin:auto;
+	clear:both;
+	width:80%;
+	border:1px solid rgba(255,255,255,1);
+	min-height:80%;
+}
