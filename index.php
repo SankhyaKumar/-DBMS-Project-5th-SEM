@@ -199,18 +199,3 @@
 		include 'loginform.inc.php';
 	}
 ?>
-<script type='text/javascript'>
-		function changeVal()
-		{
-			var xd=document.getElementById('xd');
-			var str=document.getElementById('choice').value;
-			var val='';
-			if(str=='Admin')
-				val='Username: ';
-			else
-				val='Login id: ';
-			xd.innerHTML = val;
-			//alert('XD');
-		}
-		changeVal();
-	</script>

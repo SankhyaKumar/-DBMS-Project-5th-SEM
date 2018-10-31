@@ -1,3 +1,9 @@
+<?php
+require('PHPMailer/PHPMailer.php');
+require('PHPMailer/SMTP.php');
+require('PHPMailer/Exception.php');
+
+?>
 <html>
 	<head>
 		<title>College Zone</title>
@@ -7,22 +13,17 @@
 	</head>
 	
 	<body>
-			<div id='big_wrapper'>
+	
+	<div id='big_wrapper'>
 			<div id='header'>
 				<div id='logo'>
-					<div id='logo'>
 					<img src='logo.png' id='logo_img'>
-				</div>
 				</div>
 			</div>
 			
 			<div id='main'>
-	
 <?php
 
-require('PHPMailer/PHPMailer.php');
-require('PHPMailer/SMTP.php');
-require('PHPMailer/Exception.php');
  
 function randomPassword() {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -212,15 +213,38 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 
 ?>
 
+			<button id='toggle_btn' onclick="toggle(this.value)" value=0>Show Login</button><br>
+			<script type='text/javascript'>
+				function toggle(flag)
+				{
+					if(flag==0)
+					{
+						document.getElementById('login_info').style.display='block';
+						document.getElementById('toggle_btn').value=1;
+						document.getElementById('toggle_btn').innerHTML='Hide Login';
+					}
+					else
+					{
+						document.getElementById('login_info').style.display='none';
+						document.getElementById('toggle_btn').value=0;
+						document.getElementById('toggle_btn').innerHTML='Show Login';
+					}
+				}
+			</script>
+<div id='login_info'>
 <form action="<?php echo $current_file; ?>" method="POST">
 	<input type="hidden" id="type" value="login" name="type">
-	User login type: 
+	<table style='margin:auto;'>
+	<tr>
+	<td>User login type: </td>
+	<td>
 	<select id='choice' name="choice" onchange='changeVal()'>
 		<option  value="college">college</option>
 		<option  value="student" selected>student</option>
 		<option  value="Admin">Admin</option>
 
-	</select> &nbsp;&nbsp;
+	</select>
+	</td>
 
 
 
@@ -239,23 +263,48 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 		}
 		changeVal();
 	</script>
+	<tr>
+	<td>
 	<div id='xd' style="display:inline-block;">
 	Login Id: 
 	</div>
-	<input type="text" name="app_no"> &nbsp;
-	Password: <input type="password" name="password"> &nbsp;
-	<input type="submit" value="Log In">
-
-	<br><br>
+	</td>
+	<td>
+	<input type="text" name="app_no" class='txt'> &nbsp;
+	</td>
+	<tr>
+	<td>
+	Password: 
+	</td>
+	<td><input type="password" name="password" class='txt'> </td>
+	<Tr>
+	<td colspan=2 align='center'><input type="submit" value="Log In" class='btn'></td>
+	
 	<?php
 		if(isset($_GET['q']))
 			echo 'Password details has been sent to registered email.<br>';
 	?>
-	<i>Don't have a password yet? Request password</i><Br>
-	Application No: <input type="text" name="app_no_req" maxlength="20"> &nbsp;
-	<input type="submit" value="Request" onclick="document.getElementById('type').value='request';">
+	<tr>
+	<Td colspan=2>
+	<i>Don't have a password yet? Request password</i>
+	<tr>
+	<td>
+	Application No: </td>
+	<td>
+	<input type="text" name="app_no_req" maxlength="20" class='txt'> 
+	</td>
+	<tr>
+	<td colspan=2 align='center'>
+	<input type="submit" value="Request" onclick="document.getElementById('type').value='request';" class='btn'>
+	</td>
+	</table>
 </form>
-				<hr>
+<hr>
+</div>
+				
+			<p style="margin:20px;">
+			some content
+			</p>
 			</div><!--main-->
 		</div>
 	</body>
