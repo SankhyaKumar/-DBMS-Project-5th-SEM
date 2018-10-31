@@ -1,3 +1,5 @@
+
+
 <?php
 	require 'core.inc.php';
 	require 'connect.inc.php';
@@ -16,6 +18,10 @@
 			$data=mysqli_fetch_assoc($result);
 			if ($data["profile_pic"]!=""){
 				?><img src="<?php echo "uploads/".$data['profile_pic']/*.$data["profile_pic"];*/ ?>" height="200" width="200">
+				<?php
+			}
+			else if($data["profile_pic"]==""){
+				?><img src="upload.jpg" height="200" width="200">
 				<?php
 			}
 
@@ -75,6 +81,7 @@
 	    	$result=mysqli_query($mysql_connect,$query);
 	    	$data=mysqli_fetch_assoc($result);
 	    	$output=$data["ms_12th"];
+	    	$_SESSION["document"]=$output;
 	    	if($output!=""){
 	    		?>
 	    		<a href="<?php echo "uploads/".$output; ?>" target="_blank">download your marksheet for review</a>
@@ -86,9 +93,82 @@
 		
 <?php
 	}
+
 	else if(loggedin() && $_SESSION['login_type']=='college'){
 		
 		echo '<a href="logout.php">log out</a><br />';
+		$query="select app_no,first_name,last_name,alloted_branch where alloted_clg=".$_SESSION["app_no"];
+		
+		if($result=mysqli_query($mysql_connect,$query)){
+			$result=mysqli_query($mysql_connect,$query);
+			/*echo "<table border='1'>
+				<tr>
+					<th>name</th>
+					<th>branch</th>
+				</tr>";*/
+				?>
+
+				<table>
+						<tr>
+							<th>name</th>
+							<th>branch allocated</th>
+							<th><a href="<?php echo "uploads/".$output; ?>" target="_blank">documents</a></th>
+						</tr>
+
+				<?php
+				while($data=mysqli_fetch_assoc($result)){
+
+					$_SESSION['verify_app_no']=$data['app_no'];
+					$sql="select ms_12th,allocated from students where app_no=".$data["app_no"];
+					$sql_result=mysqli_query($mysql_connect,$sql);
+					$sql_data=mysqli_fetch_assoc($sql_result);
+
+					?>
+
+					<tr>
+						<td><?php echo $data["first_name"]."  ".$data["last_name"]; ?></td>
+						<td><?php echo $data["alloted_branch"]; ?></td>
+
+						<?php  
+							if($sql_data['allocated']!=2){
+								?>
+									<form  action="verify.php" method="post">
+									<input type="hidden" name="data['app_no']"> 
+									<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
+									<td><input type="submit" name="verify" value="verify" action="verify.php" method="post"></td>
+									</form>
+								<?php
+							}
+							else if($sql_data['allocated']==2){
+								?>
+								<form>
+								<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
+								<td><input type="submit" name="verify_not" value="no documents" action="verify.php"></td>
+								</form>
+								<?php
+
+							}
+
+						?>
+
+						<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
+						<td><input type="submit" name="verify" value= action="verify.php"></td>
+
+					</tr>
+
+					</table>
+
+
+					<?php
+				}
+
+		}
+		else {
+			echo "error running query";
+		}
+
+
+
 	}
 	else if(loggedin() && $_SESSION['login_type']=='admin'){
 		
@@ -98,11 +178,4 @@
 	{
 		include 'loginform.inc.php';
 	}
-<<<<<<< HEAD
-?>
 
-
-
-=======
-?>
->>>>>>> c10c1fa6007dc5bda55bdf54f9f5f5b1321f3925
