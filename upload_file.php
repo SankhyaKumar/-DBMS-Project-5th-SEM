@@ -70,11 +70,6 @@
 				$data1=mysqli_fetch_assoc($result1);
 				$data2=mysqli_fetch_assoc($result2);
 
-				//echo $data1["profile_pic"];
-				//echo $data2["ms_12th"];
-				//if(unlink("./uploads/" . $data1["profile_pic"])) echo "file1 deleted"."<br>";
-				//if(unlink("./uploads/" . $data2["ms_12th"])) echo "file2 deleted"."<br>";
-				
 
 				if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpg") && !file_exists($newFileName) && $i==0){
 					
@@ -83,7 +78,7 @@
 					$query="update students set profile_pic='".$newFileName."' where app_no=".$_SESSION["app_no"];
 					mysqli_query($mysql_connect,$query);
 					//echo $_SESSION["app_no"]."<br>";
-					echo "hello";
+					//echo "hello";
 				}
 
 
@@ -94,7 +89,7 @@
 					move_uploaded_file($tmpFilePath,$newFilePath);
 					$query="update students set ms_12='".$newFileName."' where app_no=".$_SESSION["app_no"];
 					mysqli_query($mysql_connect,$query);
-					echo "hello";
+					//echo "hello";
 
 				}
 				else if(file_exists($newFileName)){

@@ -240,12 +240,13 @@
 		if($result=mysqli_query($mysql_connect,$sql123)){	
 				?>
 
-				<table>
+				<table cellspacing='5px'>
 						<tr>
 							<th><h3>Name</h3></th>
 							<th><h3>Branch allocated</h3></th>
 							<th><h3>Documents</h3></th>
-						</tr>
+							<th><h3>Status</h3></th>
+						
 
 				<?php
 				while($data=mysqli_fetch_assoc($result)){
@@ -279,38 +280,42 @@
 						<td><?php echo $data["alloted_branch"]; ?></td>
 
 						<?php  
-							if($sql_data['allocated']!=2){
-								$_SESSION['curr_app_no']=$data['app_no'];
-								?>
-									<form  action="verify.php" method="post">
-									<input type="hidden" name="data_app_no" value="verify it"> 
-									<td><a href="<?php echo "uploads/".$sql_data['ms_12']; ?>" target="_blank">download</a></td>
-									<td><input type="submit" name="verify" value="verify" ></td>
-									</form>
-								<?php
-							}
-							else if($sql_data['allocated']==2){
-								?>
-								<form  action="verify.php" method="post">
-									<input type="hidden" name="data_app_no" value="<?php echo $data['app_no'];  ?>"> 
-									<td><a href="<?php echo "uploads/".$sql_data['ms_12']; ?>" target="_blank">download</a></td>
-									<td><input type="text" name="verified"  ></td>
-									</form>
+								if($sql_data['allocated']!=2){
+									//$_SESSION['curr_app_no']=$data['app_no'];
+									?>
+										<form  action="verify.php" method="post">
+										<input type="hidden" name="data_app_no" value="<?php echo $data['app_no'];  ?>"> 
+										<td><a href="<?php echo "uploads/".$sql_data12['ms_12']; ?>" target="_blank">download</a></td>
+										<td><input type="submit" name="verify" value="verify" ></td>
+										</form>
 									<?php
-							}
+									
+								}
+								else if($sql_data['allocated']==2){
+									?>
+									<form  action="verify.php" method="post">
+										<input type="hidden" name="data_app_no" value="<?php echo $data['app_no'];  ?>"> 
+										<td><a href="<?php echo "uploads/".$sql_data12['ms_12']; ?>" target="_blank">download</a></td>
+										<td>verified</td>
+										</form>
+										<?php
+										//echo "uploads/".$sql_data12['ms_12'];
+								}
 							
 							
 
-							}
-							?>
+						}
+						?>
 
-					</tr>
+					
 
-					</table>
+					
 
 
 					<?php
-				}
+				}?>
+					</table>
+				<?php
 
 		}
 		else {

@@ -158,6 +158,25 @@
 						}
 						updateRank(str);
 					}
+					function updateSeats()
+					{
+						
+						var b=document.getElementById('branches').value;
+						var c=document.getElementById('colleges').value;
+							if (window.XMLHttpRequest) {
+								xmlhttp = new XMLHttpRequest();
+							} else {
+								xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+							}
+							xmlhttp.onreadystatechange = function() {
+								if (this.readyState == 4 && this.status == 200) {
+									document.getElementById("clg_info").innerHTML = this.responseText;
+								}
+							};
+							xmlhttp.open("GET","update_seats.php?b="+b+"&c="+c,true);
+							xmlhttp.send();
+						
+					}
 					function updateRank(str)
 					{
 						if (str == "") {
