@@ -9,7 +9,7 @@
 	{
 		
 		while($row = mysqli_fetch_array($result)) {
-			echo "<option value=".$row['branch_id'].">".$row['branch_name']."</option>";
+			echo "<option onclick='updateSeats()' value=".$row['branch_id'].">".$row['branch_name']."</option>";
 		}
 		
 	}
