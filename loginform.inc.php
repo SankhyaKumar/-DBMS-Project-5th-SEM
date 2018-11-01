@@ -190,6 +190,9 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 			else
 			{
 				$pass=randomPassword();
+				$query = "update students set password='".$pass."'";
+				if(!mysqli_query($mysql_connect,$query))
+					echo 'error';
 				$mail = new PHPMailer\PHPMailer\PHPMailer();;                
 				try {
 					
