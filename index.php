@@ -7,7 +7,7 @@
 	
 	if(loggedin() && $_SESSION['login_type']=='student')
 	{
-								$firstname = getuserfield('first_name');
+		$firstname = getuserfield('first_name');
 		
 		?>
 <html>
@@ -204,9 +204,9 @@
 
 				<table>
 						<tr>
-							<th>name</th>
-							<th>branch allocated</th>
-							<th>documents</a></th>
+							<th><h3>Name</h3></th>
+							<th><h3>Branch allocated</h3></th>
+							<th><h3>Documents</h3></th>
 						</tr>
 
 				<?php
@@ -258,7 +258,6 @@
 							
 							
 
-						
 							}
 							?>
 

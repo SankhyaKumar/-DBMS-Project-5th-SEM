@@ -8,32 +8,51 @@
 	if($code=="1")
 	{
 		$choice = $_POST["preference"];
-		$query="SELECT * FROM pref WHERE app_no='".$_SESSION['app_no']."'";
+		$query="SELECT * FROM pref WHERE app_no=".$_SESSION['app_no']." order by pref_no";
 		if($preferences = mysqli_query($mysql_connect, $query))
 		{
-			$preferences = mysqli_query($mysql_connect, $query);
 			
 			$pref_no = mysqli_num_rows($preferences);
 			//echo $req_pref["clg_id"];
 			$curr_pref = mysqli_fetch_assoc($preferences);
-			for($i=0; $i < $pref_no && $i < $choice; $i++)
+			for($i=1; $i < $pref_no && $i < $choice; $i++)
 			{
 				$curr_pref = mysqli_fetch_assoc($preferences);
 			}
-			$priority = curr_pref['pref_no'];
+			$priority = $curr_pref['pref_no'];
 			$query="DELETE FROM pref WHERE app_no='".$_SESSION['app_no']."' AND clg_id='".$curr_pref['clg_id']."' AND branch_id='".$curr_pref['branch_id']."'";
 			if(mysqli_query($mysql_connect, $query))
 			{
-				$query="update pref set pref_no = pref_no - 1 WHERE pref_no > ".$priority;
-				if(!mysqli_query($mysql_connect, $query))
+				$query="select max(pref_no) as max from pref group by app_no having app_no='".$_SESSION['app_no']."'";
+				if($query=mysqli_query($mysql_connect, $query))
 				{
-					echo 'error running query.';
+					if(mysqli_num_rows($query)!=0)
+					{
+						$max_pref=mysqli_fetch_assoc($query);
+						$max_pref=$max_pref['max'];
+						echo $max_pref;
+						echo '<Br>';
+						echo $priority;
+						if($priority<$max_pref)
+						{
+							$query="update pref set pref_no = pref_no - 1 WHERE pref_no > ".$priority;
+							if(!mysqli_query($mysql_connect, $query))
+							{
+								echo 'error running query1.';
+							}
+							else
+							{
+								echo 'done';
+							}
+						}
+					}
 				}
+				
 				header('Location: '.$http_referer);
 			}
 			else
 			{
-				echo 'error running query.';
+				echo 'error running query2.';
 			}
 		}
 		else

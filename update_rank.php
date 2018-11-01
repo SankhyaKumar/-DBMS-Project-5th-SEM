@@ -8,7 +8,7 @@
 	if($result = mysqli_query($mysql_connect,$sql))
 	{
 		while($row = mysqli_fetch_array($result)) {
-			echo "Website: ".$row['website']."<br>NIRF rank: ".$row['clg_rank']."";
+			echo "Website: <a href='".$row['website']."' target='_bank'>".$row['website']."</a><br>NIRF rank: ".$row['clg_rank']."";
 		}
 	}
 	else

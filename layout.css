@@ -35,10 +35,12 @@ hr{
 	padding:2px;
 }
 
-option,select{
+select{
 	color:rgb(64,188,216);
-	border:1px solid rgb(64,188,216);
 }
+option{
+}
+
 a,a:active,a:hover,a:visited{
 	color:inherit;
 }
