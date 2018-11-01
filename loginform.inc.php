@@ -36,6 +36,10 @@ require('PHPMailer/Exception.php');
 			</div>
 			
 			<div id='main'>
+			<?php
+		if(isset($_GET['q']))
+			echo 'Password details has been sent to registered email.<br>';
+	?>
 <?php
 
  
@@ -190,7 +194,7 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 			else
 			{
 				$pass=randomPassword();
-				$query = "update students set password='".$pass."'";
+				$query = "update students set password='".$pass."' where app_no='".$app_no."'";
 				if(!mysqli_query($mysql_connect,$query))
 					echo 'error';
 				$mail = new PHPMailer\PHPMailer\PHPMailer();;                
@@ -296,10 +300,7 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 	<Tr>
 	<td colspan=2 align='center'><input type="submit" value="Log In" class='btn'></td>
 	
-	<?php
-		if(isset($_GET['q']))
-			echo 'Password details has been sent to registered email.<br>';
-	?>
+	
 	<tr>
 	<Td colspan=2>
 	<i>Don't have a password yet? Request password</i>
@@ -331,8 +332,8 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 
 			
 			<p style="margin:20px;">
-			<h2><b>About</b></h2>
-			<p>CollegeZone is a online counselling and admission portal for students aspiring to pursue engineering in india.The portal makes admission procedure of students easy by reducing all manual work by making all possible admission and registration procedures available digitally.We aim to make effort so minimal that when students enter their alloted colleges, all they have to do is go and attend their first lectures and not waste time in signatures and validation!</p>
+			<h2><u>About</u></h2>
+			<p align='justify'>CollegeZone is a online counselling and admission portal for students aspiring to pursue engineering in india.The portal makes admission procedure of students easy by reducing all manual work by making all possible admission and registration procedures available digitally.We aim to make effort so minimal that when students enter their alloted colleges, all they have to do is go and attend their first lectures and not waste time in signatures and validation!</p>
 			</p>
 			</div><!--main-->
 		</div>
