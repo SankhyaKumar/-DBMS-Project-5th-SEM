@@ -324,9 +324,11 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 
 <br>
 
+<img src="show3.jpeg" style="width: 80% ;height: 50%;display: block;margin-left: auto;
+    margin-right: auto;">
 <div style="text-align:center">
   
-</div>
+
 			
 			<p style="margin:20px;">
 			<h2><b>About</b></h2>
