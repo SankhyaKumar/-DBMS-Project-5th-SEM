@@ -131,7 +131,7 @@
 				echo "counselling has not started yet!!";
 			}
 			else if($data["allocated"]==1){
-				$query1="select alloted_clg from students where app_no=".$_SESSION['app_no'];
+				$query1="select alloted_clg,alloted_branch from students where app_no=".$_SESSION['app_no'];
 				$result1=mysqli_query($mysql_connect,$query1);
 				$data1=mysqli_fetch_assoc($result1);
 				
@@ -142,13 +142,18 @@
 				//echo "counselling has not started yet!!";
 			}
 			else if($data['allocated']==2){
-				$query1="select alloted_clg from students where app_no=".$_SESSION['app_no'];
+				$query1="select alloted_clg,alloted_branch from students where app_no=".$_SESSION['app_no'];
 				$result1=mysqli_query($mysql_connect,$query1);
 				$data1=mysqli_fetch_assoc($result1);
+
+				$query21="select branch_name from branches where branch_id=".$data1['alloted_branch'];
+				$result21=mysqli_query($mysql_connect,$query21);
+				$data21=mysqli_fetch_assoc($result21);
+
 				$query2="select clg_name from colleges where clg_id=".$data1['alloted_clg'];
 				$result2=mysqli_query($mysql_connect,$query2);
 				$data2=mysqli_fetch_assoc($result2);
-				echo $data2['clg_name']." has accepted you documents";
+				echo $data2['clg_name']." has accepted you documents for the branch ".$data21['branch_name'];
 			}
 		?>
 		</td>

@@ -16,7 +16,6 @@
 	</head>
 	
 	<body>
-	<p>please edit your preferences before 6 nov</p>
 	<div id='big_wrapper'>
 			<div id='header'>
 				<div id='logo'>
