@@ -83,14 +83,18 @@
 					$query="update students set profile_pic='".$newFileName."' where app_no=".$_SESSION["app_no"];
 					mysqli_query($mysql_connect,$query);
 					//echo $_SESSION["app_no"]."<br>";
+					echo "hello";
 				}
+
+
 				else if(get_file_extension($filename)=="pdf" && !file_exists($newFileName) && $i==1){
 					
 					unlink("./uploads/" . $data2["ms_12th"]);
 					//echo $_SESSION["app_no"]."<br>";
 					move_uploaded_file($tmpFilePath,$newFilePath);
-					$query="update students set ms_12th='".$newFileName."' where app_no=".$_SESSION["app_no"];
+					$query="update students set ms_12='".$newFileName."' where app_no=".$_SESSION["app_no"];
 					mysqli_query($mysql_connect,$query);
+					echo "hello";
 
 				}
 				else if(file_exists($newFileName)){

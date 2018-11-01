@@ -186,11 +186,11 @@
 		<tr>
 		<Td>
 	    <?php
-	    	$query="select ms_12th from students where app_no=".$_SESSION["app_no"];
+	    	$query="select ms_12 from students where app_no=".$_SESSION["app_no"];
 	    	if($result=mysqli_query($mysql_connect,$query))
 			{
 				$data=mysqli_fetch_assoc($result);
-				$output=$data["ms_12th"];
+				$output=$data["ms_12"];
 				if($output!=""){
 					?>
 					<a href="<?php echo "uploads/".$output; ?>" target="_blank">download your marksheet for review</a>
@@ -249,19 +249,23 @@
 
 				<?php
 				while($data=mysqli_fetch_assoc($result)){
-
+					$certificates=0;
 					//$_SESSION['verify_app_no']=$data['app_no'];
 					$sql="select allocated from students where app_no=".$data["app_no"];
-					$sql12="select ms_12th from students where app_no=".$data["app_no"];
-
+					$sql12="select ms_12 from students where app_no=".$data["app_no"];
+					//echo $data['app_no'];
 					$sql_result=mysqli_query($mysql_connect,$sql);
 					if($sql_result12=mysqli_query($mysql_connect,$sql12)){
-						$certificates=1;
+						$sql_data12=mysqli_fetch_assoc($sql_result12);
+						//echo $sql_data12['ms_12'];
+						
+						//echo $certificates;\
+						if($sql_data12['ms_12']!=''){
+							$certificates=1;
+						}
 					}
 
 					$sql_data=mysqli_fetch_assoc($sql_result);
-					//$sql_data12=mysqli_fetch_assoc($sql_result12);
-					//$sql_rows=mysqli_num_rows($sql_result12);
 
 					
 
@@ -275,20 +279,21 @@
 						<td><?php echo $data["alloted_branch"]; ?></td>
 
 						<?php  
-							if($sql_data['allocated']!=2 && $certificates==1){
+							if($sql_data['allocated']!=2){
+								$_SESSION['curr_app_no']=$data['app_no'];
 								?>
 									<form  action="verify.php" method="post">
-									<input type="hidden" name="data_app_no" value="$data['app_no']"> 
-									<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
-									<td><input type="submit" name="verify" value="verify" action="verify.php" method="post"></td>
+									<input type="hidden" name="data_app_no" value="verify it"> 
+									<td><a href="<?php echo "uploads/".$sql_data['ms_12']; ?>" target="_blank">download</a></td>
+									<td><input type="submit" name="verify" value="verify" ></td>
 									</form>
 								<?php
 							}
-							else if($sql_data['allocated']==2 && $certificates==1){
+							else if($sql_data['allocated']==2){
 								?>
 								<form  action="verify.php" method="post">
-									<input type="hidden" name="data_app_no" value="$data['app_no']"> 
-									<td><a href="<?php echo "uploads/".$sql_data['ms_12th']; ?>" target="_blank">download</a></td>
+									<input type="hidden" name="data_app_no" value="<?php echo $data['app_no'];  ?>"> 
+									<td><a href="<?php echo "uploads/".$sql_data['ms_12']; ?>" target="_blank">download</a></td>
 									<td><input type="text" name="verified"  ></td>
 									</form>
 									<?php
