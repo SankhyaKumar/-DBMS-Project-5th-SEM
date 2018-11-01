@@ -76,7 +76,7 @@
 				//if(unlink("./uploads/" . $data2["ms_12th"])) echo "file2 deleted"."<br>";
 				
 
-				if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpeg") && !file_exists($newFileName) && $i==0){
+				if((get_file_extension($filename)=="PNG" || get_file_extension($filename)=="jpg") && !file_exists($newFileName) && $i==0){
 					
 					unlink("./uploads/" . $data1["profile_pic"]);
 					move_uploaded_file($tmpFilePath,$newFilePath);
