@@ -118,6 +118,44 @@
 		?>
 		</td>
 		<tr>
+			<td>
+		counselling status:
+		</td>
+		<td>
+		<?php
+			$query="select allocated from students where app_no=".$_SESSION["app_no"];
+			$result=mysqli_query($mysql_connect,$query);
+			$data=mysqli_fetch_assoc($result);
+			//echo $data["allocated"];
+			if($data["allocated"]==0){
+				echo "counselling has not started yet!!";
+			}
+			else if($data["allocated"]==1){
+				$query1="select alloted_clg from students where app_no=".$_SESSION['app_no'];
+				$result1=mysqli_query($mysql_connect,$query1);
+				$data1=mysqli_fetch_assoc($result1);
+				
+				$query2="select clg_name from colleges where clg_id=".$data1['alloted_clg'];
+				$result2=mysqli_query($mysql_connect,$query2);
+				$data2=mysqli_fetch_assoc($result2);
+				echo "college allocated is ".$data2['clg_name'];
+				//echo "counselling has not started yet!!";
+			}
+			else if($data['allocated']==2){
+				$query1="select alloted_clg from students where app_no=".$_SESSION['app_no'];
+				$result1=mysqli_query($mysql_connect,$query1);
+				$data1=mysqli_fetch_assoc($result1);
+				$query2="select clg_name from colleges where clg_id=".$data1['alloted_clg'];
+				$result2=mysqli_query($mysql_connect,$query2);
+				$data2=mysqli_fetch_assoc($result2);
+				echo $data2['clg_name']." has accepted you documents";
+			}
+		?>
+		</td>
+		<tr>
+			
+		</tr>
+
 		<form action="upload_file.php" method="post" enctype="multipart/form-data">
     	<td colspan=2>Select image to upload(in jpeg format) and 12th marksheet(in pdf format):</td>
 		<tr>

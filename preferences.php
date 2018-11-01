@@ -16,7 +16,7 @@
 	</head>
 	
 	<body>
-	
+	<p>please edit your preferences before 6 nov</p>
 	<div id='big_wrapper'>
 			<div id='header'>
 				<div id='logo'>
@@ -25,14 +25,15 @@
 				<div id='menu'>
 						<div class='item'><a href="logout.php" class='link'>Logout</a></div>
 						<div class='item'><a href="index.php" class='link'>Profile</a></div>
-						
+							
 						
 
 				</div>
+
 			</div>
 			
 			<div id='main'>
-
+				<p><b><i>please edit your preferences before 6 nov</i></b></p>
 			<h2>Current preference list:</h2>
 			<form method="post" action="#" id="preference_form">
 				<!-- put options through php -->
