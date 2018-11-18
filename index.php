@@ -119,7 +119,7 @@
 		</td>
 		<tr>
 			<td>
-		counselling status:
+		Counselling status:
 		</td>
 		<td>
 		<?php
@@ -357,7 +357,7 @@
 			</div>
 			
 			<div id='main'>
-			<a href="counselling.php">start the counselling</a>
+			<a href="counselling.php" class='link'>start the counselling</a>
 			
 			</div><!--main-->
 		</div>
