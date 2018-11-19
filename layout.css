@@ -1,12 +1,15 @@
 body,default{
-	font-family:"Trebuchet MS", Helvetica, sans-serif;
+	font-family:"PT Sans Narrow","Trebuchet MS", Helvetica, sans-serif;
 	padding:0px;
 	margin:0px;
 	background-color:white;
 	//color:blue;
+	color: grey;
+	//color:rgb(64,188,216);
+}
+h1,h2,h3{
 	color:rgb(64,188,216);
 }
-
 hr{
 	width:50%;
 	border:1px solid white;

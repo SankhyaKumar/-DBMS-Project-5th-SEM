@@ -331,7 +331,7 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 			<Table>
 			<tr>
 			<td width="60%" style="padding:50px;">
-			<h2><u>About</u></h2>
+			<h2 style=''>About CollegeZone</h2>
 			<p align='justify'>CollegeZone is a online counselling and admission portal for students aspiring to pursue engineering in india.The portal makes admission procedure of students easy by reducing all manual work by making all possible admission and registration procedures available digitally.We aim to make effort so minimal that when students enter their alloted colleges, all they have to do is go and attend their first lectures and not waste time in signatures and validation!</p>
 			</p>
 			</td>
