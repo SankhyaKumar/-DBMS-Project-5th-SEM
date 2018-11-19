@@ -328,11 +328,24 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 <div style="text-align:center">
   
 
-			
-			<p style="margin:20px;">
+			<Table>
+			<tr>
+			<td width="60%" style="padding:50px;">
 			<h2><u>About</u></h2>
 			<p align='justify'>CollegeZone is a online counselling and admission portal for students aspiring to pursue engineering in india.The portal makes admission procedure of students easy by reducing all manual work by making all possible admission and registration procedures available digitally.We aim to make effort so minimal that when students enter their alloted colleges, all they have to do is go and attend their first lectures and not waste time in signatures and validation!</p>
 			</p>
+			</td>
+			<td width="40%" style=''>
+			<h3 style='text-align:center;background-color:rgb(64,188,216); color:white; padding:20px;width:200px;'>External Links</h2>
+			<br>
+			<a class='link' href='https://josaa.nic.in/webinfocms/Public/View.aspx?page=71' target='blank' style=''>Rank and seat allotment statistics</a>
+			<br><br><br>
+			<a class='link' href='https://josaa.nic.in/seatinfo/root/InstituteView.aspx' target='blank' style=''>Institute detials</a>
+			
+			</td>
+			</table>
+			<p style="margin:20px;">
+			
 			</div><!--main-->
 		</div>
 	</body>

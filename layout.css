@@ -3,6 +3,7 @@ body,default{
 	padding:0px;
 	margin:0px;
 	background-color:white;
+	//color:blue;
 	color:rgb(64,188,216);
 }
 
@@ -27,7 +28,7 @@ hr{
 }
 .txt
 {
-	border:1px solid white;
+	border:1px solid blue;
 	color:rgb(64,188,216);
 	background-color:white;
 	font-weight:bold;
@@ -45,7 +46,7 @@ a,a:active,a:hover,a:visited{
 	color:inherit;
 }
 .btn{
-	border:1px solid white;
+	border:1px solid blue;
 	color:white;
 	font-weight:bold;
 	background-color:rgb(64,188,216);
@@ -65,8 +66,8 @@ a,a:active,a:hover,a:visited{
 }
 
 #logo_img{
-	width:200px;
-	margin-left:20%;
+	width:100px;
+	margin-left:40%;
 	height:60px;
 }
 #menu
@@ -85,15 +86,15 @@ a,a:active,a:hover,a:visited{
 }
 .link{
 	text-decoration:none;
-	border:1px solid white;
-	padding:5px;
+	border:1px solid rgb(64,188,216);
+	padding:10px;
 }
 .link:hover{
-	color:yellow;
-	border: 1px solid yellow;
+	color:blue;
+	border: 1px solid blue;
 }
 #main{
-	padding:20px;
+	padding:50px;
 	//background-color:rgba(251,253,62,0.3);
 	position:relative;
 	top:80px;
