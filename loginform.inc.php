@@ -325,8 +325,6 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 
 <br>
 
-<img src="show3.jpeg" style="width: 80% ;height: 50%;display: block;margin-left: auto;
-    margin-right: auto;">
 <div style="text-align:center">
   
 

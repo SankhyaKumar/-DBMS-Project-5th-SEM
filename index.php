@@ -119,7 +119,7 @@
 		</td>
 		<tr>
 			<td>
-		counselling status:
+		Counselling status:
 		</td>
 		<td>
 		<?php
