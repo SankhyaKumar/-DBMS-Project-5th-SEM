@@ -356,9 +356,11 @@
 				</div>
 			</div>
 			
-			<div id='main'>
-			<a href="counselling.php" class='link'>start the counselling</a>
-			
+			<div id='main' style="text-align: center">
+				<br><br><br><br><br>
+			<a href="counselling.php" class='link'>Start the counselling</a><br><br><br>
+			<a href="reset.php" class='link'>Reset the counselling</a><br><br><br>
+			<a href="autofill_pref.php" class='link'>Autofill preferences</a>
 			</div><!--main-->
 		</div>
 	</body>

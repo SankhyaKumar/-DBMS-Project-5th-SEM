@@ -339,7 +339,7 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 			<br>
 			<a class='link' href='https://josaa.nic.in/webinfocms/Public/View.aspx?page=71' target='blank' style=''>Rank and seat allotment statistics</a>
 			<br><br><br>
-			<a class='link' href='https://josaa.nic.in/seatinfo/root/InstituteView.aspx' target='blank' style=''>Institute detials</a>
+			<a class='link' href='https://josaa.nic.in/seatinfo/root/InstituteView.aspx' target='blank' style=''>Institute details</a>
 			
 			</td>
 			</table>

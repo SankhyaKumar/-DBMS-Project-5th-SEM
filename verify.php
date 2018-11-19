@@ -34,7 +34,7 @@
 					
 					$mail->isHTML(true);                                
 					$mail->Subject = 'college alloted';
-					$mail->Body    = "you have been alloted a college please check your profile on collegezone for further rederences";
+					$mail->Body    = "you have been alloted a college please check your profile on collegezone for further references";
 					//$mail->AltBody = "current password:".$pass." You can change the password later.";
 
 					$mail->send();
