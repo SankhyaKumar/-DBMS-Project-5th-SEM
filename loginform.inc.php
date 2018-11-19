@@ -320,10 +320,9 @@ else if(isset($_POST['type']) && $_POST['type']='request')
 
 
 
-</div style="width: 50%;">
+</div>
 
 
-<br>
 
 <div style="text-align:center">
   <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1159G_mIy8MDLgIBlnXWyB36GMq2IqRWxAJqtuvInK-s&font=Default&lang=en&initial_zoom=2&height=500' width='100%' height='500' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
